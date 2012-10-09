@@ -89,3 +89,5 @@ if [ -z "$DEBUG" ]; then
  git push origin master
 fi
 ```
+
+* 更新テスト
