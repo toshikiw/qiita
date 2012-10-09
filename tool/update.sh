@@ -39,7 +39,7 @@ if [ -z "$DEBUG" ]; then
  #GitHubにコミット
  echo "\nConnecting to GitHub...\n"
  git add -u *.md
- git add $(git status -s -uall *.md|xargs -0 -J % echo %| tr -d "?")
+ git add $(git status -s -uall *.md|grep -v '^M'|tr -d "?")
  git commit -m "$MSG"
  git push origin master
 fi
