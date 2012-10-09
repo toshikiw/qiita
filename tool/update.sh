@@ -39,7 +39,10 @@ if [ -z "$DEBUG" ]; then
  #GitHubにコミット
  echo "\nConnecting to GitHub...\n"
  git add -u *.md
- git add $(git status -s -uall *.md|grep -v '^M'|tr -d "?")
+ UNTRACKED=$(git status -s -uall *.md|grep -v '^M'|tr -d "?")
+ if [ -n "$UNTRACKED" ]; then
+   git add $UNTRACKED
+ fi
  git commit -m "$MSG"
  git push origin master
 fi
