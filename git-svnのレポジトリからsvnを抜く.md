@@ -44,7 +44,7 @@ git リモートレポジトリのmasterをcheckoutする
 git-svnのsvnレポジトリの設定(↑)を削除
 
 ```sh
-% git -r -d trunk
+% git branch -r -d trunk
 % for b in $(git branch -r|grep tags); do git branch -r -d $b; done 
 ```
 svnのtrunkはremotes/trunkブランチになるので削除
@@ -60,4 +60,10 @@ git-svnのオブジェクトへの参照が消えたはずなので
 
 で不要領域を回収しておく
 
+### git-svnのmetadataを削除
 
+.git/svn にgit-svnのメタデータ(.git/svn/.metadata)が残っているので.git/svnごと削除
+
+```sh
+rm -rf .git/svn
+```
